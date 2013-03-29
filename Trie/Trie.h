@@ -6,7 +6,7 @@
 class Trie
 {
 private:
-	static const int ALPHABET_SIZE = 27;
+	static const int ALPHABET_SIZE = 26;
 
 	struct node
 	{

@@ -1,4 +1,5 @@
 #include "Trie.h"
+#include <iostream>
 
 Trie::Trie()
 {
@@ -16,8 +17,27 @@ void Trie::insertWord(char* word)
 
 	while (*word != '\0')
 	{
+		int letter = toupper(*word) - 'A';
 
+		if (nodePtr->pointers[letter] == NULL)
+		{
+			node* newNode = new node;
+			newNode->character = *word;
+			newNode->endOfWord = false;
+			for (int i = 0; i < ALPHABET_SIZE; i++)
+			{
+				newNode->pointers[i] = NULL;
+			}
+			nodePtr->pointers[letter] = newNode;
+			nodePtr = newNode;
+		}
+		else
+		{
+			nodePtr = nodePtr->pointers[letter];
+		}
+		word++;
 	}
+	nodePtr->endOfWord = true;
 }
 
 void Trie::deleteTrie(node* nodePtr)
