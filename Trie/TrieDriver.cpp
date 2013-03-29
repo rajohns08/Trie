@@ -3,15 +3,27 @@
 
 using namespace std;
 
+void printChar(char word[]);
+
 int main()
 {
-	int x = 5;
-	int* ptr = &x;
-	int* arr[10] = {ptr};
+	Trie trieObj;
 
-	cout << ptr << endl;
-	cout << arr[0] << endl;
+	char* charArray[] = {"bear", "bid", "stock", "set"};
+
+	printChar(charArray[0]);
 
 	cin.get();
 	return 0;
+}
+
+void printChar(char word[])
+{
+	int i = 0;
+	while (word[i] != '\0')
+	{
+		cout << word[i] << endl;
+
+		i++;
+	}
 }
