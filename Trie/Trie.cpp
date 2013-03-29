@@ -1,6 +1,8 @@
 #include "Trie.h"
 #include <iostream>
 
+using namespace std;
+
 Trie::Trie()
 {
 	root = new node;
@@ -38,6 +40,53 @@ void Trie::insertWord(char* word)
 		word++;
 	}
 	nodePtr->endOfWord = true;
+}
+
+void Trie::deleteWord(char* word)
+{
+	node* nodePtr = root;
+
+	while (*word != '\0')
+	{
+		int letter = toupper(*word) - 'A';
+
+		if (nodePtr->pointers[letter] == NULL)
+		{
+			cout << "That word does not exist" << endl;
+		}
+		else
+		{
+			nodePtr = nodePtr->pointers[letter];
+		}
+
+		word++;
+	}
+
+	// finish implementation
+
+}
+
+bool Trie::searchWord(char* word)
+{
+	node* nodePtr = root;
+
+	while (*word != '\0')
+	{
+		int letter = toupper(*word) - 'A';
+
+		if (nodePtr->pointers[letter] == NULL)
+		{
+			return false;
+		}
+		else
+		{
+			nodePtr = nodePtr->pointers[letter];
+		}
+
+		word++;
+	}
+
+	return true;
 }
 
 void Trie::deleteTrie(node* nodePtr)

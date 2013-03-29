@@ -7,8 +7,8 @@ int main()
 {
 	Trie trieObj;
 
-	trieObj.insertWord("h");
-	trieObj.insertWord("h");
+	trieObj.insertWord("he");
+	cout << trieObj.searchWord("hey") << endl;
 
 	cin.get();
 	return 0;

@@ -23,7 +23,7 @@ public:
 	Trie();
 	void insertWord(char* word);
 	void deleteWord(char* word);
-	void searchWord(char* word);
+	bool searchWord(char* word);
 	~Trie()
 		{ deleteTrie(root); }
 };
