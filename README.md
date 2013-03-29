@@ -1,0 +1,1 @@
+My attempt at implementing a trie data structure for characters in C++
