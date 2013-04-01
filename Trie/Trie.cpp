@@ -45,25 +45,28 @@ void Trie::insertWord(char* word)
 void Trie::deleteWord(char* word)
 {
 	node* nodePtr = root;
+	node* previousNode;
 
-	while (*word != '\0')
+	while (*word != '\0' || nodePtr->endOfWord)
 	{
 		int letter = toupper(*word) - 'A';
 
-		if (nodePtr->pointers[letter] == NULL)
+		if (nodePtr->endOfWord)
 		{
-			cout << "That word does not exist" << endl;
+			deleteTrie(nodePtr);
+			for (int i = 0; i < ALPHABET_SIZE; i++)
+				previousNode->pointers[i] = NULL;
+			previousNode->endOfWord = true;
+			return;
 		}
 		else
 		{
+			previousNode = nodePtr;
 			nodePtr = nodePtr->pointers[letter];
 		}
 
 		word++;
 	}
-
-	// finish implementation
-
 }
 
 bool Trie::searchWord(char* word)
